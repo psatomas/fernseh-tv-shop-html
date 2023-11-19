@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Myriad';
+    src: url('../fonts/Myriad Pro Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.ttf');
+    font-weight: bold;
+}
+
+body {
+    font-family: Myriad;
+}
+
+input:focus,
+input:focus-visible {
+    outline: none;
+}
+
+input[type="radio"]+label span {
+    transition: background .2s,
+        transform .2s;
+}
+
+input[type="radio"]+label span:hover,
+input[type="radio"]+label:hover span {
+    transform: scale(1.2);
+}
+
+input[type="radio"]:checked+label span {
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 2px white inset;
+}
+
+nav {
+    overflow: hidden;
+    z-index: 999;
+}
+
+nav ul li a {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    background-color: #3b74c6
+}
+
+.nav-list-box {
+    position: relative;
+}
+
+.nav-list-box::after {
+    content: '';
+    height: 400%;
+    background-color: #2056A4;
+    position: absolute;
+    width: 120px;
+    right: -10%;
+    top: -200%;
+    z-index: 1;
+    transform: rotate(50deg);
+}
+
+.top-bar h2:before {
+    content: attr(data-text);
+    transform-origin: bottom;
+    transform: rotateX(180deg);
+    position: absolute;
+    line-height: 32px;
+    background: linear-gradient(0deg, #000 0, transparent 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+    opacity: .3;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.diagonal-button {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (max-width: 1280px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    main {
+        margin-top: 158px;
+    }
+
+    .nav-list-box::after {
+        display: none;
+    }
+
+    nav ul li a {
+        width: 100%;
+        margin: 0;
+        padding: 16px 20px;
+    }
+
+    .navicon {
+        width: 1.125em;
+        height: .125em;
+    }
+
+    .navicon::before,
+    .navicon::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: all .2s ease-out;
+        content: '';
+        background: #fff;
+    }
+
+    .navicon::before {
+        top: 5px;
+    }
+
+    .navicon::after {
+        top: -5px;
+    }
+
+    .menu-btn:not(:checked)~.nav-list-box .menu {
+        display: none;
+    }
+
+    .menu-btn:checked~.nav-list-box .menu {
+        display: block;
+    }
+
+    .menu-btn:checked~.nav-list-box {
+        position: fixed;
+        top: 158px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 158px);
+    }
+
+    .menu-btn:checked~.menu-icon .navicon {
+        background: transparent;
+    }
+
+    .menu-btn:checked~.menu-icon .navicon::before {
+        transform: rotate(-45deg);
+    }
+
+    .menu-btn:checked~.menu-icon .navicon::after {
+        transform: rotate(45deg);
+    }
+
+    .menu-btn:checked~.menu-icon .navicon::before,
+    .menu-btn:checked~.menu-icon .navicon::after {
+        top: 0;
+    }
+}
